@@ -1,0 +1,703 @@
+/* School System UI Core v4 */
+:root{
+    --ui-primary:#2563eb;
+    --ui-primary-dark:#1d4ed8;
+    --ui-bg:#f6f8fc;
+    --ui-surface:#ffffff;
+    --ui-border:#e5e7eb;
+    --ui-text:#111827;
+    --ui-muted:#6b7280;
+    --ui-success:#16a34a;
+    --ui-warning:#d97706;
+    --ui-danger:#dc2626;
+    --ui-info:#0891b2;
+    --ui-radius:14px;
+    --ui-shadow:0 8px 28px rgba(15,23,42,.07);
+    --ui-sidebar:270px;
+    --ui-font:Tahoma,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;
+    background:var(--ui-bg);
+    color:var(--ui-text);
+    font-family:var(--ui-font);
+    line-height:1.7;
+}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.ui-app{min-height:100vh}
+.ui-shell{display:flex;min-height:100vh}
+.ui-sidebar{
+    width:var(--ui-sidebar);
+    flex:0 0 var(--ui-sidebar);
+    background:var(--ui-surface);
+    border-left:1px solid var(--ui-border);
+    padding:20px 14px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow:auto;
+}
+.ui-brand{
+    display:flex;align-items:center;gap:10px;
+    padding:8px 10px 22px;
+    font-weight:800;font-size:18px;
+}
+.ui-brand-mark{
+    width:40px;height:40px;border-radius:12px;
+    display:grid;place-items:center;
+    background:var(--ui-primary);color:#fff;
+}
+.ui-nav{display:grid;gap:6px}
+.ui-nav a{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 12px;border-radius:10px;
+    color:#4b5563;transition:.2s;
+}
+.ui-nav a:hover,.ui-nav a.active{
+    background:#eff6ff;color:var(--ui-primary);font-weight:700;
+}
+.ui-main{min-width:0;flex:1}
+.ui-topbar{
+    min-height:70px;background:rgba(255,255,255,.92);
+    border-bottom:1px solid var(--ui-border);
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:12px 24px;position:sticky;top:0;z-index:20;
+    backdrop-filter:blur(10px);
+}
+.ui-topbar-title{font-size:18px;font-weight:800}
+.ui-user{display:flex;align-items:center;gap:10px}
+.ui-avatar{
+    width:38px;height:38px;border-radius:50%;
+    display:grid;place-items:center;background:#dbeafe;color:#1d4ed8;font-weight:800;
+}
+.ui-content{padding:24px;max-width:1600px;margin:auto}
+.ui-page-head{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    gap:16px;margin-bottom:20px;
+}
+.ui-page-head h1,.ui-page-head h2{margin:0 0 5px;font-size:24px}
+.ui-page-head p{margin:0;color:var(--ui-muted)}
+.ui-grid{display:grid;gap:16px}
+.ui-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ui-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ui-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ui-card{
+    background:var(--ui-surface);
+    border:1px solid var(--ui-border);
+    border-radius:var(--ui-radius);
+    box-shadow:var(--ui-shadow);
+    padding:18px;
+}
+.ui-stat{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ui-stat-value{font-size:28px;font-weight:900;line-height:1.2}
+.ui-stat-label{color:var(--ui-muted);font-size:13px}
+.ui-stat-icon{
+    width:48px;height:48px;border-radius:12px;
+    display:grid;place-items:center;background:#eff6ff;color:var(--ui-primary);
+}
+.ui-table-wrap{overflow:auto}
+.ui-table{width:100%;border-collapse:collapse;min-width:680px}
+.ui-table th,.ui-table td{
+    padding:12px 13px;border-bottom:1px solid var(--ui-border);
+    text-align:right;vertical-align:middle;
+}
+.ui-table th{font-size:13px;color:#4b5563;background:#f9fafb}
+.ui-table tr:hover td{background:#fafcff}
+.ui-form{display:grid;gap:14px}
+.ui-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ui-field{display:grid;gap:6px}
+.ui-field.full{grid-column:1/-1}
+.ui-field label{font-size:13px;font-weight:700}
+.ui-field input,.ui-field select,.ui-field textarea{
+    width:100%;border:1px solid #d1d5db;border-radius:10px;
+    padding:10px 12px;background:#fff;outline:none;transition:.2s;
+}
+.ui-field textarea{min-height:110px;resize:vertical}
+.ui-field input:focus,.ui-field select:focus,.ui-field textarea:focus{
+    border-color:var(--ui-primary);box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+.ui-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ui-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    border:1px solid transparent;border-radius:10px;padding:9px 14px;
+    font-weight:700;transition:.2s;
+}
+.ui-btn-primary{background:var(--ui-primary);color:#fff}
+.ui-btn-primary:hover{background:var(--ui-primary-dark)}
+.ui-btn-secondary{background:#fff;border-color:var(--ui-border)}
+.ui-btn-success{background:var(--ui-success);color:#fff}
+.ui-btn-warning{background:var(--ui-warning);color:#fff}
+.ui-btn-danger{background:var(--ui-danger);color:#fff}
+.ui-btn-sm{padding:6px 10px;font-size:12px}
+.ui-badge{
+    display:inline-flex;align-items:center;gap:5px;
+    border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800;
+}
+.ui-badge-success{background:#dcfce7;color:#166534}
+.ui-badge-warning{background:#fef3c7;color:#92400e}
+.ui-badge-danger{background:#fee2e2;color:#991b1b}
+.ui-badge-info{background:#cffafe;color:#155e75}
+.ui-badge-neutral{background:#f3f4f6;color:#4b5563}
+.ui-alert{
+    border:1px solid var(--ui-border);border-radius:12px;
+    padding:12px 14px;margin-bottom:16px;
+}
+.ui-alert-success{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.ui-alert-error{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.ui-alert-warning{background:#fffbeb;border-color:#fde68a;color:#92400e}
+.ui-alert-info{background:#ecfeff;border-color:#a5f3fc;color:#155e75}
+.ui-empty{text-align:center;padding:38px 20px;color:var(--ui-muted)}
+.ui-divider{height:1px;background:var(--ui-border);margin:18px 0}
+.ui-mobile-toggle{display:none;border:1px solid var(--ui-border);background:#fff;border-radius:10px;padding:8px 10px}
+.ui-overlay{display:none}
+@media(max-width:1100px){
+    .ui-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ui-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:800px){
+    .ui-sidebar{
+        position:fixed;right:0;top:0;z-index:50;
+        transform:translateX(110%);transition:.25s;
+        box-shadow:-12px 0 30px rgba(0,0,0,.12);
+    }
+    .ui-shell.sidebar-open .ui-sidebar{transform:translateX(0)}
+    .ui-shell.sidebar-open .ui-overlay{display:block;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:40}
+    .ui-mobile-toggle{display:inline-flex}
+    .ui-content{padding:16px}
+    .ui-topbar{padding:10px 16px}
+    .ui-grid-2,.ui-grid-3,.ui-grid-4,.ui-form-grid{grid-template-columns:1fr}
+    .ui-page-head{flex-direction:column}
+    .ui-field.full{grid-column:auto}
+}
+@media(max-width:480px){
+    .ui-content{padding:12px}
+    .ui-card{padding:14px}
+    .ui-topbar-title{font-size:15px}
+    .ui-user-name{display:none}
+}
+
+
+/* =========================================================
+   SCHOOL SYSTEM UI CORE V5
+   Shared visual bridge for ALL existing panels.
+   Existing PHP/business logic remains untouched.
+   ========================================================= */
+
+:root{
+    --ui-font:"Vazirmatn",Tahoma,Arial,sans-serif;
+    --ui-bg:#f6f8fc;
+    --ui-surface:#fff;
+    --ui-primary:#2563eb;
+    --ui-primary-dark:#1d4ed8;
+    --ui-border:#e5e7eb;
+    --ui-text:#111827;
+    --ui-muted:#6b7280;
+    --ui-shadow:0 8px 28px rgba(15,23,42,.07);
+}
+
+html,body{
+    background:var(--ui-bg)!important;
+    color:var(--ui-text);
+    font-family:var(--ui-font)!important;
+}
+
+/* Shared sidebar language */
+body > aside,
+body > div > aside,
+#sidebar{
+    scrollbar-width:thin;
+    scrollbar-color:#cbd5e1 transparent;
+}
+
+#sidebar{
+    box-shadow:var(--ui-shadow)!important;
+}
+
+#sidebar a,
+body > div > aside a{
+    transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+
+#sidebar a:hover,
+body > div > aside a:hover{
+    transform:translateY(-1px);
+}
+
+/* Admin dark sidebar -> Core palette */
+body > #sidebar,
+body > aside.bg-slate-900,
+body > aside[class*="bg-gradient-to-b"]{
+    background:var(--ui-surface)!important;
+    color:var(--ui-text)!important;
+    border-left:1px solid var(--ui-border)!important;
+}
+
+body > aside.bg-slate-900 a,
+body > aside[class*="bg-gradient-to-b"] a,
+#sidebar.bg-slate-900 a{
+    color:#4b5563!important;
+}
+
+body > aside.bg-slate-900 a:hover,
+body > aside[class*="bg-gradient-to-b"] a:hover,
+#sidebar.bg-slate-900 a:hover{
+    background:#eff6ff!important;
+    color:var(--ui-primary)!important;
+}
+
+/* Sidebar headings/dividers */
+#sidebar .border-b,
+body > aside .border-b{
+    border-color:var(--ui-border)!important;
+}
+
+/* Main page backgrounds */
+main,
+main.bg-slate-100,
+main.bg-gray-100,
+main[class*="bg-slate-"],
+main[class*="bg-gray-"]{
+    background:var(--ui-bg)!important;
+}
+
+/* Common page cards */
+.bg-white.rounded-xl,
+.bg-white.rounded-2xl,
+.bg-white.rounded-3xl,
+.bg-white.border,
+.bg-white.shadow,
+.bg-white.shadow-sm,
+.bg-white.shadow-md,
+.bg-white.shadow-lg{
+    border-color:var(--ui-border)!important;
+    box-shadow:var(--ui-shadow)!important;
+}
+
+/* Normalize the most common radius variants */
+.rounded-xl,.rounded-2xl,.rounded-3xl{
+    border-radius:var(--ui-radius)!important;
+}
+
+/* Common inputs */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea{
+    border-radius:10px;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus{
+    outline:none!important;
+    border-color:var(--ui-primary)!important;
+    box-shadow:0 0 0 3px rgba(37,99,235,.10)!important;
+}
+
+/* Tables */
+table{
+    border-collapse:collapse;
+}
+table thead th{
+    background:#f9fafb!important;
+    color:#4b5563;
+}
+table th,
+table td{
+    border-color:var(--ui-border)!important;
+}
+table tbody tr:hover td{
+    background:#fafcff;
+}
+
+/* Primary buttons */
+button.bg-blue-600,
+button.bg-indigo-600,
+button.bg-primary-600,
+a.bg-blue-600,
+a.bg-indigo-600,
+a.bg-primary-600,
+input.bg-blue-600,
+button[class*="bg-school-600"]{
+    background:var(--ui-primary)!important;
+}
+button.bg-blue-600:hover,
+button.bg-indigo-600:hover,
+button.bg-primary-600:hover,
+a.bg-blue-600:hover,
+a.bg-indigo-600:hover,
+a.bg-primary-600:hover{
+    background:var(--ui-primary-dark)!important;
+}
+
+/* Remove different panel-specific blue/indigo visual language */
+.text-blue-600,.text-indigo-600,.text-primary-600{
+    color:var(--ui-primary)!important;
+}
+.border-blue-200,.border-indigo-200,.border-primary-200{
+    border-color:#bfdbfe!important;
+}
+
+/* Status colors stay semantically consistent */
+.text-green-600,.text-emerald-600{color:var(--ui-success)!important}
+.text-yellow-600,.text-amber-600{color:var(--ui-warning)!important}
+.text-red-600{color:var(--ui-danger)!important}
+
+/* Alerts */
+.bg-red-50{background:#fef2f2!important}
+.bg-green-50,.bg-emerald-50{background:#f0fdf4!important}
+.bg-yellow-50,.bg-amber-50{background:#fffbeb!important}
+.bg-blue-50,.bg-cyan-50,.bg-indigo-50{background:#eff6ff!important}
+
+/* Cards/stat blocks */
+[class*="shadow-"]{
+    --tw-shadow:var(--ui-shadow)!important;
+}
+
+/* Better mobile consistency for all panels */
+@media(max-width:1024px){
+    #sidebar{
+        max-width:280px;
+    }
+}
+
+@media(max-width:768px){
+    main{
+        width:100%;
+    }
+
+    .overflow-x-auto{
+        -webkit-overflow-scrolling:touch;
+    }
+
+    table{
+        min-width:650px;
+    }
+
+    .grid.md\:grid-cols-2,
+    .grid.lg\:grid-cols-2,
+    .grid.xl\:grid-cols-2{
+        grid-template-columns:1fr!important;
+    }
+
+    .grid.md\:grid-cols-3,
+    .grid.lg\:grid-cols-3,
+    .grid.xl\:grid-cols-3{
+        grid-template-columns:1fr!important;
+    }
+
+    .grid.md\:grid-cols-4,
+    .grid.lg\:grid-cols-4,
+    .grid.xl\:grid-cols-4{
+        grid-template-columns:1fr!important;
+    }
+}
+
+/* Existing UI Core components always win */
+.ui-card{
+    background:var(--ui-surface)!important;
+    border-color:var(--ui-border)!important;
+    box-shadow:var(--ui-shadow)!important;
+}
+
+/* V5.2 — Parent panel UI Core bridge */
+.parent-ui-core,
+.parent-panel,
+#parent-panel{
+    font-family:var(--ui-font)!important;
+}
+
+.parent-ui-core .bg-white,
+.parent-panel .bg-white,
+#parent-panel .bg-white{
+    border-color:var(--ui-border)!important;
+    box-shadow:var(--ui-shadow)!important;
+}
+
+.parent-ui-core input:not([type="checkbox"]):not([type="radio"]),
+.parent-ui-core select,
+.parent-ui-core textarea,
+.parent-panel input:not([type="checkbox"]):not([type="radio"]),
+.parent-panel select,
+.parent-panel textarea,
+#parent-panel input:not([type="checkbox"]):not([type="radio"]),
+#parent-panel select,
+#parent-panel textarea{
+    border-color:var(--ui-border)!important;
+    background:#fff!important;
+}
+
+.parent-ui-core .bg-blue-600,
+.parent-panel .bg-blue-600,
+#parent-panel .bg-blue-600{
+    background:var(--ui-primary)!important;
+}
+
+/* =========================================================
+   Parent Manage — UI Core V5.3
+   Scoped compatibility for the legacy parent_manage markup.
+========================================================= */
+.parent-manage-core{
+    margin:0;
+    min-height:100vh;
+    background:var(--ui-bg)!important;
+    color:var(--ui-text);
+    font-family:var(--ui-font);
+}
+.parent-manage-core .parent-shell{min-height:100vh}
+.parent-manage-core .parent-sidebar{
+    background:var(--ui-surface)!important;
+    color:var(--ui-text)!important;
+}
+.parent-manage-core .parent-sidebar .parent-brand-text{
+    font-weight:800;
+    font-size:18px;
+    color:var(--ui-text);
+}
+.parent-manage-core .parent-sidebar .text-slate-400{
+    color:var(--ui-muted)!important;
+}
+.parent-manage-core .parent-sidebar .border-slate-700{
+    border-color:var(--ui-border)!important;
+}
+.parent-manage-core .parent-nav a{
+    color:#4b5563!important;
+    background:transparent!important;
+}
+.parent-manage-core .parent-nav a:hover{
+    background:#eff6ff!important;
+    color:var(--ui-primary)!important;
+}
+.parent-manage-core .parent-nav a.bg-blue-600{
+    background:#eff6ff!important;
+    color:var(--ui-primary)!important;
+    font-weight:800;
+}
+.parent-manage-core .parent-content{
+    width:100%;
+    max-width:1600px;
+    margin:0 auto;
+}
+.parent-manage-core .bg-white{
+    background:var(--ui-surface)!important;
+    border:1px solid var(--ui-border);
+    box-shadow:var(--ui-shadow)!important;
+}
+.parent-manage-core .rounded-xl{border-radius:var(--ui-radius)!important}
+.parent-manage-core .rounded-lg{border-radius:10px!important}
+.parent-manage-core .shadow,
+.parent-manage-core .shadow-sm{
+    box-shadow:var(--ui-shadow)!important;
+}
+.parent-manage-core input,
+.parent-manage-core select,
+.parent-manage-core textarea{
+    border-color:var(--ui-border)!important;
+    border-radius:10px!important;
+}
+.parent-manage-core .text-gray-400{color:var(--ui-muted)!important}
+.parent-manage-core .text-gray-500{color:#6b7280!important}
+.parent-manage-core .text-gray-600{color:#4b5563!important}
+.parent-manage-core .text-gray-700{color:#374151!important}
+.parent-manage-core .text-gray-800{color:var(--ui-text)!important}
+.parent-manage-core .bg-gray-100{background:var(--ui-bg)!important}
+.parent-manage-core .bg-blue-100{background:#eff6ff!important}
+.parent-manage-core .text-blue-700,
+.parent-manage-core .text-blue-600{color:var(--ui-primary)!important}
+.parent-manage-core .bg-purple-100{background:#f5f3ff!important}
+.parent-manage-core .text-purple-700{color:#6d28d9!important}
+.parent-manage-core .border-blue-600{border-color:var(--ui-primary)!important}
+.parent-manage-core .border-r-4.border-blue-600{border-right:4px solid var(--ui-primary)!important}
+.parent-manage-core .bg-slate-900{background:var(--ui-surface)!important}
+.parent-manage-core .bg-slate-800:hover{background:#eff6ff!important}
+@media(max-width:767px){
+    .parent-manage-core .parent-sidebar{display:none}
+    .parent-manage-core .ui-content{padding:16px}
+}
+
+/* =========================================================
+   PARENT INTERNAL COMPONENTS — UI CORE V5.5
+   Cards / tables / forms / buttons / badges are normalized
+   to the same visual language used by the other panels.
+========================================================= */
+.parent-manage-core,
+.parent-core{
+    --parent-primary:var(--ui-primary);
+    --parent-primary-dark:var(--ui-primary-dark);
+}
+
+/* Cards */
+.parent-manage-core .bg-white,
+.parent-core .bg-white{
+    border:1px solid var(--ui-border)!important;
+    border-radius:var(--ui-radius)!important;
+    box-shadow:var(--ui-shadow)!important;
+}
+.parent-manage-core .shadow,
+.parent-manage-core .shadow-sm,
+.parent-core .shadow,
+.parent-core .shadow-sm{
+    box-shadow:var(--ui-shadow)!important;
+}
+.parent-manage-core .border-t,
+.parent-manage-core .border-b,
+.parent-core .border-t,
+.parent-core .border-b{
+    border-color:var(--ui-border)!important;
+}
+.parent-manage-core .bg-gray-50,
+.parent-core .bg-gray-50{background:#f9fafb!important}
+
+/* Tables */
+.parent-manage-core table,
+.parent-core table{
+    border-collapse:collapse;
+}
+.parent-manage-core table thead,
+.parent-core table thead{background:#f9fafb!important}
+.parent-manage-core table th,
+.parent-manage-core table td,
+.parent-core table th,
+.parent-core table td{
+    border-bottom:1px solid var(--ui-border)!important;
+    vertical-align:middle;
+}
+.parent-manage-core table th,
+.parent-core table th{
+    color:#4b5563!important;
+    font-size:13px;
+    font-weight:800;
+}
+.parent-manage-core table tbody tr:hover td,
+.parent-core table tbody tr:hover td{background:#fafcff!important}
+
+/* Inputs / selects / textareas */
+.parent-manage-core input:not([type=checkbox]):not([type=radio]),
+.parent-manage-core select,
+.parent-manage-core textarea,
+.parent-core input:not([type=checkbox]):not([type=radio]),
+.parent-core select,
+.parent-core textarea{
+    border:1px solid #d1d5db!important;
+    border-radius:10px!important;
+    background:#fff!important;
+    outline:none!important;
+    transition:.2s ease!important;
+}
+.parent-manage-core input:not([type=checkbox]):not([type=radio]):focus,
+.parent-manage-core select:focus,
+.parent-manage-core textarea:focus,
+.parent-core input:not([type=checkbox]):not([type=radio]):focus,
+.parent-core select:focus,
+.parent-core textarea:focus{
+    border-color:var(--ui-primary)!important;
+    box-shadow:0 0 0 3px rgba(37,99,235,.10)!important;
+}
+
+/* Buttons */
+.parent-manage-core button,
+.parent-manage-core a[class*="bg-blue-600"],
+.parent-manage-core a[class*="bg-gray-700"],
+.parent-manage-core a[class*="bg-red-"],
+.parent-core button,
+.parent-core a[class*="bg-blue-600"]{
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease!important;
+}
+.parent-manage-core button:hover,
+.parent-manage-core a[class*="bg-blue-600"]:hover,
+.parent-core button:hover,
+.parent-core a[class*="bg-blue-600"]:hover{
+    transform:translateY(-1px);
+}
+.parent-manage-core .bg-blue-600,
+.parent-core .bg-blue-600{background:var(--ui-primary)!important}
+.parent-manage-core .hover\:bg-blue-700:hover,
+.parent-core .hover\:bg-blue-700:hover{background:var(--ui-primary-dark)!important}
+.parent-manage-core .bg-blue-500,
+.parent-core .bg-blue-500{background:#3b82f6!important}
+
+/* Badges / status chips */
+.parent-manage-core .rounded-full.text-xs,
+.parent-core .rounded-full.text-xs{
+    font-weight:800!important;
+}
+
+/* Empty states */
+.parent-manage-core .text-gray-400,
+.parent-core .text-gray-400{color:var(--ui-muted)!important}
+
+/* Headings and content spacing */
+.parent-manage-core h1,
+.parent-manage-core h2,
+.parent-manage-core h3,
+.parent-core h1,
+.parent-core h2,
+.parent-core h3{color:var(--ui-text)}
+
+/* Legacy card radius normalization */
+.parent-manage-core .rounded-lg,
+.parent-core .rounded-lg{border-radius:10px!important}
+.parent-manage-core .rounded-xl,
+.parent-core .rounded-xl{border-radius:var(--ui-radius)!important}
+.parent-manage-core .rounded-2xl,
+.parent-core .rounded-2xl{border-radius:16px!important}
+
+/* Parent dashboard: same Core accent instead of a separate indigo/violet theme */
+.parent-core .bg-blue-100{background:#dbeafe!important}
+.parent-core .text-blue-700,
+.parent-core .text-blue-600{color:var(--ui-primary)!important}
+.parent-core .bg-blue-50{background:#eff6ff!important}
+.parent-core .border-blue-100{border-color:#dbeafe!important}
+
+@media(max-width:800px){
+    .parent-manage-core table{min-width:680px}
+    .parent-manage-core .overflow-x-auto{border-radius:var(--ui-radius)!important}
+}
+
+
+/* ===== School System V6 — Unified UI Core ===== */
+:root{
+  --ui-radius:14px;
+  --ui-radius-sm:10px;
+  --ui-border:#e5e7eb;
+  --ui-muted:#64748b;
+  --ui-surface:#ffffff;
+  --ui-bg:#f8fafc;
+  --ui-shadow:0 6px 20px rgba(15,23,42,.06);
+}
+.card,.panel,.box,.stat-card,.dashboard-card,.content-card{
+  border:1px solid var(--ui-border);
+  border-radius:var(--ui-radius);
+  background:var(--ui-surface);
+  box-shadow:var(--ui-shadow);
+}
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border:1px solid var(--ui-border);
+  border-radius:var(--ui-radius-sm);
+}
+table th,table td{padding:12px 14px;border-bottom:1px solid var(--ui-border);}
+table tr:last-child td{border-bottom:0;}
+input,select,textarea{
+  border:1px solid var(--ui-border);
+  border-radius:var(--ui-radius-sm);
+  min-height:42px;
+  padding:9px 12px;
+  background:#fff;
+}
+button,.btn,a.btn{
+  border-radius:var(--ui-radius-sm);
+  transition:transform .15s ease,box-shadow .15s ease,opacity .15s ease;
+}
+button:hover,.btn:hover,a.btn:hover{transform:translateY(-1px);}
+.badge,.status,.tag{border-radius:999px;}
+@media (max-width:768px){
+  table{display:block;overflow-x:auto;}
+}
+
