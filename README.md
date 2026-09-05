@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # School Smart — Interactive Demo
 
 A portfolio-ready interactive demo of a school management platform.
@@ -510,4 +510,3 @@ School Smart می‌تواند برای مجموعه‌های مختلف آمو�
 از اطلاعات دانش‌آموز تا برنامه هفتگی و کارت ورود به جلسه.**
 
 ساخته شده با ❤️ برای ساده‌تر کردن مدیریت مجموعه‌های آموزشی.
->>>>>>> 18e9cfb6341c3bf72161506a1ed6f3c119a2f773
